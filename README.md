@@ -14,6 +14,8 @@ Release
 
 Offline
 -------
+this Bell Community install needs a USB Stick ...
+- [one Community with USB Stick](https://gist.github.com/dogi/dbe5408d97fc112e06a6)
 
 QA
 --
