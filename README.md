@@ -23,5 +23,5 @@ this Bell Community install needs a USB Stick ...
 QA
 --
 this BeLL's are build out of release and follow specially the need of QA which has to decide if a new build works with all the install and upgrade workflow of nations and communities:
-- [2 Nations (old and new release) with QA content](https://gist.github.com/dogi/bdcb4b1ff455d93a6ae9)
+- [2 Nations (old and new release) with QA content](qa/2nations-autorunonce.sh)
 - [original 2 Nations](https://gist.github.com/treehouse-su/90d2fe58e1d8e0dcbbd7)
