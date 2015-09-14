@@ -34,10 +34,7 @@ function nation {
 
   # install nation
   node install_linux http://127.0.0.1:$2
-  curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/allow_jsonp' -d '"true"'
-  #curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/enable_cors' -d '"true"'
-  #curl -X PUT 'http://127.0.0.1:'$2'/_config/cors/origins' -d '"*"'
-  curl -X PUT 'http://127.0.0.1:'$2'/_config/admins/nation' -d '"oleoleole"'
+
 
   # overwrite some .couch with qa-content
   docker stop $1
@@ -48,11 +45,17 @@ function nation {
   wget http://download.ole.org/.qa/content/resources.couch -O /srv/data/$1/resources.couch
   docker start $1
 
-  node_modules/.bin/couchapp push databases/groups.js http://localhost:5984/groups
-  node_modules/.bin/couchapp push databases/resources.js http://localhost:5984/resources
-  node_modules/.bin/couchapp push databases/publications.js http://localhost:5984/publications
-  node_modules/.bin/couchapp push databases/collectionlist.js http://localhost:5984/collectionlist
-  node_modules/.bin/couchapp push databases/coursestep.js http://localhost:5984/coursestep
+  node_modules/.bin/couchapp push databases/groups.js http://http://127.0.0.1:$2/groups
+  node_modules/.bin/couchapp push databases/resources.js http://http://127.0.0.1:$2/resources
+  node_modules/.bin/couchapp push databases/publications.js http://http://127.0.0.1:$2/publications
+  node_modules/.bin/couchapp push databases/collectionlist.js http://http://127.0.0.1:$2/collectionlist
+  node_modules/.bin/couchapp push databases/coursestep.js http://http://127.0.0.1:$2/coursestep
+
+  # set configs
+  curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/allow_jsonp' -d '"true"'
+  #curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/enable_cors' -d '"true"'
+  #curl -X PUT 'http://127.0.0.1:'$2'/_config/cors/origins' -d '"*"'
+  curl -X PUT 'http://127.0.0.1:'$2'/_config/admins/nation' -d '"oleoleole"'
 
   # add to '/boot/autorun.sh'
   echo 'sleep 1' >> /boot/autorun.sh
