@@ -62,22 +62,14 @@ function nation {
   echo 'docker start '$1 >> /boot/autorun.sh
 
   # add to proxy
-  #echo '"'$1'.qa.ole.org": "http://'$1'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.js
-  #echo '"'$3'.qa.ole.org": "http://'$3'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.js
+  echo '"'$1'.qa.ole.org": "http://'$1'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
+  echo '"'$3'.qa.ole.org": "http://'$3'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
 
 }
 
 # write '/boot/autrun.sh'
 echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
-
-# write proxy
-#echo '#!/usr/bin/node' > /root/ole/server.js
-#echo "var express = require('express')" >> /root/ole/server.js
-#echo 'var PortJack = express()' >> /root/ole/server.js
-#echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
-#echo 'var options = {' >> /root/ole/server.js
-#echo '' >> /root/ole/server.js
 
 
 
@@ -87,27 +79,31 @@ nation new 5985 60
 
 
 
-
-# add to proxy
-#echo '"qa.ole.org": "http://ole.org/our-team/"' >> /root/ole/server.js
-#echo '}' >> /root/ole/server.js
-#echo 'if (options.hasOwnProperty(req.hostname)) {' >> /root/ole/server.js
-#echo "res.setHeader('Location', options[req.hostname])" >> /root/ole/server.js
-#echo '}' >> /root/ole/server.js
-#echo 'else {' >> /root/ole/server.js
-#echo "res.setHeader('Location', 'http://ole.org')" >> /root/ole/server.js
-#echo '}' >> /root/ole/server.js
-#echo 'res.statusCode = 302' >> /root/ole/server.js
-#echo 'res.end()' >> /root/ole/server.js
-#echo '})' >> /root/ole/server.js
-#echo 'PortJack.listen(80)' >> /root/ole/server.js
-#echo '' >> /root/ole/server.js
-#chmod +x /root/ole/server.js
-#npm -g install express
+# write proxy
+echo '#!/usr/bin/node' > /root/ole/server.js
+echo "var express = require('express')" >> /root/ole/server.js
+echo 'var PortJack = express()' >> /root/ole/server.js
+echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
+echo 'var options = {' >> /root/ole/server.js
+cat /root/ole/server.temp >> /root/ole/server.js
+echo '"qa.ole.org": "http://ole.org/our-team/"' >> /root/ole/server.js
+echo '}' >> /root/ole/server.js
+echo 'if (options.hasOwnProperty(req.hostname)) {' >> /root/ole/server.js
+echo "res.setHeader('Location', options[req.hostname])" >> /root/ole/server.js
+echo '}' >> /root/ole/server.js
+echo 'else {' >> /root/ole/server.js
+echo "res.setHeader('Location', 'http://ole.org')" >> /root/ole/server.js
+echo '}' >> /root/ole/server.js
+echo 'res.statusCode = 302' >> /root/ole/server.js
+echo 'res.end()' >> /root/ole/server.js
+echo '})' >> /root/ole/server.js
+echo 'PortJack.listen(80)' >> /root/ole/server.js
+chmod +x /root/ole/server.js
+npm -g install express
 
 # add to '/boot/autorun.sh'
-#echo '' >> /boot/autorun.sh
-#echo '/root/ole/server.js' >> /boot/autorun.sh
+echo '' >> /boot/autorun.sh
+echo '/root/ole/server.js' >> /boot/autorun.sh
 
 sync
 sync
