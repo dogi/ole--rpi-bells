@@ -80,7 +80,6 @@ nation new 5985 60
 
 
 # write proxy
-echo '#!/usr/bin/node' > /root/ole/server.js
 echo "var express = require('express')" >> /root/ole/server.js
 echo 'var PortJack = express()' >> /root/ole/server.js
 echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
@@ -99,11 +98,12 @@ echo 'res.end()' >> /root/ole/server.js
 echo '})' >> /root/ole/server.js
 echo 'PortJack.listen(80)' >> /root/ole/server.js
 chmod +x /root/ole/server.js
-npm -g install express
+cd /root/ole
+npm install express
 
 # add to '/boot/autorun.sh'
 echo '' >> /boot/autorun.sh
-echo '/root/ole/server.js' >> /boot/autorun.sh
+echo 'node /root/ole/server.js' >> /boot/autorun.sh
 
 sync
 sync
