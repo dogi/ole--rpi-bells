@@ -45,11 +45,11 @@ function nation {
   wget http://download.ole.org/.qa/content/resources.couch -O /srv/data/$1/resources.couch
   docker start $1
 
-  node_modules/.bin/couchapp push databases/groups.js http://http://127.0.0.1:$2/groups
-  node_modules/.bin/couchapp push databases/resources.js http://http://127.0.0.1:$2/resources
-  node_modules/.bin/couchapp push databases/publications.js http://http://127.0.0.1:$2/publications
-  node_modules/.bin/couchapp push databases/collectionlist.js http://http://127.0.0.1:$2/collectionlist
-  node_modules/.bin/couchapp push databases/coursestep.js http://http://127.0.0.1:$2/coursestep
+  node_modules/.bin/couchapp push databases/groups.js http://127.0.0.1:$2/groups
+  node_modules/.bin/couchapp push databases/resources.js http://127.0.0.1:$2/resources
+  node_modules/.bin/couchapp push databases/publications.js http://127.0.0.1:$2/publications
+  node_modules/.bin/couchapp push databases/collectionlist.js http://127.0.0.1:$2/collectionlist
+  node_modules/.bin/couchapp push databases/coursestep.js http://127.0.0.1:$2/coursestep
 
   # set configs
   curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/allow_jsonp' -d '"true"'
