@@ -31,6 +31,8 @@ function nation {
   cp install_windows install_linux
   sed -i "s/pushDocToDb.bat/.\/pushDocToDb.sh/" install_linux
   sed -i 's#databases\\\\#databases/#' install_linux
+  sed -i 's/NationBell/'$1' QA/' init_docs/ConfigurationsDoc-Nation.txt
+  sed -i 's/nationbell/'$1'/' init_docs/ConfigurationsDoc-Nation.txt
 
   # install nation
   node install_linux http://127.0.0.1:$2
