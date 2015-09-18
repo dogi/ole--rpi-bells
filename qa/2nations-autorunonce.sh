@@ -31,7 +31,7 @@ function nation {
   cp install_windows install_linux
   sed -i "s/pushDocToDb.bat/.\/pushDocToDb.sh/" install_linux
   sed -i 's#databases\\\\#databases/#' install_linux
-  sed -i 's/NationBell/'$1' QA/' init_docs/ConfigurationsDoc-Nation.txt
+  sed -i 's/NationBell/'$1'QA/' init_docs/ConfigurationsDoc-Nation.txt
   sed -i 's/nationbell/'$1'/' init_docs/ConfigurationsDoc-Nation.txt
 
   # install nation
@@ -79,7 +79,7 @@ echo '' >> /boot/autorun.sh
 
 # install an old and a new nation
 nation old 5984 52
-nation new 5985 60
+nation new 5985 61
 
 
 
