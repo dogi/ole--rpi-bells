@@ -20,8 +20,9 @@ function replicate {
 
 #branch
 #loop over all databases with function replicate
-#curl -X GET http://$community/_all_dbs
-#remove ["]
-#replace , \n
+for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d'`
+do
+  echo "d = $database"
+done
 
 reboot
