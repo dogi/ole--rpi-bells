@@ -2,7 +2,7 @@
 
 #variables
 name='branch'
-#community='new/.local:5984'
+community='new.local:5984'
 
 # rename hostname of image to name
 pirateship rename $name
@@ -20,5 +20,6 @@ function replicate {
 
 #branch
 #loop over all databases with function replicate
+#curl -X GET http://$community/_all_dbs
 
 reboot
