@@ -21,5 +21,7 @@ function replicate {
 #branch
 #loop over all databases with function replicate
 #curl -X GET http://$community/_all_dbs
+#remove ["]
+#replace , \n
 
 reboot
