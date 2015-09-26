@@ -9,10 +9,9 @@ pirateship rename $name
 
 # template for continuous replication for databases
 function replicate {
-#clone or create database
-#replicate curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicate -d ' {"source": "http://admin:admin_password@production:5984/foo", "target": "http://admin:admin_password@stage:5984/foo", "create_target": true, "continuous": true} '
-#reverse replicate
-#security: curl -X GET http://admin:admin_password@localhost:5984/foo/_security | xargs curl -H 'Content-Type: application/json' -X PUT http://admin:admin_password@localhost:5984/foo/_security -d {}
+  curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicate -d ' {"source": "http://$community/$1", "target": "http://127.0.0.1:5984/$1", "create_target": true, "continuous": true} '
+  curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicate -d ' {"source": "http://127.0.0.1:5984/$1", "target": "http://$community/$1", "continuous": true} '
+  #curl -X GET http://$community/$1/_security | xargs curl -H 'Content-Type: application/json' -X PUT http://127.0.0.1:5984/$1/_security -d {}
 }
 
 # create couchdb docker container
@@ -23,6 +22,7 @@ function replicate {
 for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d'`
 do
   echo "d = $database"
+  #replicate $database
 done
 
 reboot
