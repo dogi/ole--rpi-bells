@@ -25,4 +25,14 @@ do
   #replicate $database
 done
 
+# write '/boot/autrun.sh'
+echo '#!/bin/sh' > /boot/autorun.sh
+echo '' >> /boot/autorun.sh
+echo 'sleep 1' >> /boot/autorun.sh
+echo 'docker start '$name >> /boot/autorun.sh
+
+sync
+sync
+sync
+
 reboot
