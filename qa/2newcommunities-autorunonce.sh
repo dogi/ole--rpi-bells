@@ -3,7 +3,7 @@
 name='new'
 port='5985'
 
-# rename hostname of image to bell
+# rename hostname of image to name
 pirateship rename $name
 
 # template for community install
