@@ -17,12 +17,11 @@ function replicate {
 # create couchdb docker container
 docker run -d -p 5984:5984 --name $name -v /srv/data/$name:/usr/local/var/lib/couchdb -v /srv/log/$name:/usr/local/var/log/couchdb dogi/rpi-couchdb
 
-#branch
-#loop over all databases with function replicate
+# branch
+# loop over all databases with function replicate
 for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d'`
 do
-  echo "d = $database"
-  #replicate $database
+  replicate $database
 done
 
 # write '/boot/autrun.sh'
