@@ -40,11 +40,11 @@ function nation {
 
   # overwrite some .couch with qa-content
   docker stop $1
-  wget http://download.ole.org/.qa/content/collectionlist.couch -O /srv/data/$1/collectionlist.couch
-  wget http://download.ole.org/.qa/content/coursestep.couch -O /srv/data/$1/coursestep.couch
-  wget http://download.ole.org/.qa/content/groups.couch -O /srv/data/$1/groups.couch
-  wget http://download.ole.org/.qa/content/publications.couch -O /srv/data/$1/publications.couch
-  wget http://download.ole.org/.qa/content/resources.couch -O /srv/data/$1/resources.couch
+  wget http://download.ole.org/.qa/.content/collectionlist.couch -O /srv/data/$1/collectionlist.couch
+  wget http://download.ole.org/.qa/.content/coursestep.couch -O /srv/data/$1/coursestep.couch
+  wget http://download.ole.org/.qa/.content/groups.couch -O /srv/data/$1/groups.couch
+  wget http://download.ole.org/.qa/.content/publications.couch -O /srv/data/$1/publications.couch
+  wget http://download.ole.org/.qa/.content/resources.couch -O /srv/data/$1/resources.couch
   docker start $1
 
   node_modules/.bin/couchapp push databases/groups.js http://127.0.0.1:$2/groups
