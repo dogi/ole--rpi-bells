@@ -58,8 +58,8 @@ function nation {
   curl -X POST -H "Content-Type: application/json" --data '{ "kind":"Community", "lastAppUpdateDate":" - ", "version":" - ", "lastActivitiesSyncDate":" - ", "lastPublicationsSyncDate":" - ", "Name":"new'$1'", "Code":"new'$1'", "Url":"'$1'.local:5985", "SponserName":"Organization", "SponserAddress":"Address", "ContactFirstname":"Jane", "ContactMiddlename":"", "ContactLastname":"Doe", "ContactPhone":"0123456789", "ContactEmail":"jane@doe", "LeaderFirstname":"John", "LeaderMiddlename":"", "LeaderLastname":"Doe", "LeaderPhone":"0123456789", "LeaderEmail":"john@doe", "LeaderId":"admin", "LeaderPassword":"password", "UrgentName":"dogi", "UrgentPhone":"ole.org", "AuthName":"dogi", "AuthDate":"1978-09-10" }' 'http://127.0.0.1:'$2'/community'
   for publication in `curl -X GET 'http://127.0.0.1:'$2'/publications/_all_docs' | tr '"' ' ' | awk '{print $4}' | sed '/^_/ d'`
   do
-    curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"old'$1'", "communityUrl":"'$1'.local:5984", "publicationId":'$publication' }' 'http://127.0.0.1:'$2'/publicationdistributions'
-    curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"new'$1'", "communityUrl":"'$1'.local:5985", "publicationId":'$publication' }' 'http://127.0.0.1:'$2'/publicationdistributions'
+    curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"old'$1'", "communityUrl":"'$1'.local:5984", "publicationId":'$publication' }' 'http://127.0.0.1:'$2'/publicationdistribution'
+    curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"new'$1'", "communityUrl":"'$1'.local:5985", "publicationId":'$publication' }' 'http://127.0.0.1:'$2'/publicationdistribution'
   done
   curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/allow_jsonp' -d '"true"'
   #curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/enable_cors' -d '"true"'
