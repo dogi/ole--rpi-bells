@@ -2,7 +2,10 @@
 
 #variables
 name='branch'
-community='new.local:5984'
+communityname='new.local'
+communityport='5984'
+
+community="`getent hosts $communityname | awk '{ print $1 }'`:$communityport"
 
 # rename hostname of image to name
 pirateship rename $name
