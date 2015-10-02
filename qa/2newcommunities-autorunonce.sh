@@ -104,7 +104,7 @@ function community {
 echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
 
-community old 5984 52
-community new 5985 63
+community old 5984 63
+community new 5985 64
  
 reboot
