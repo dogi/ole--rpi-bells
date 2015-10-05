@@ -7,6 +7,9 @@ network='pirateship ethernet ...'
 script='qa/2nations-autrunonce.sh'
 
 # load local settings from qa.config file
+if [[ -r ./qa.config ]] ; then
+    source ./qa.config
+fi
 
 # set rpi network
 #`Snetwork`
