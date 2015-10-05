@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # default settings
+update=true
+repository='ole--rpi-bells'
+network='pirateship ethernet ...'
+script='qa/2nations-autrunonce.sh'
 
 # load local settings from qa.config file
 
 # set rpi network
+#`Snetwork`
 
 # git pull to get newest code, if not here create
 # cp new autorun.sh over myself
