@@ -89,6 +89,8 @@ nation new 5985 64
 
 
 # write proxy
+echo '#!/usr/bin/env node' > /root/ole/server.js
+echo '' >> /root/ole/server.js
 echo "var express = require('express')" >> /root/ole/server.js
 echo 'var PortJack = express()' >> /root/ole/server.js
 echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
