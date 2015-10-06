@@ -13,7 +13,7 @@ if [[ -r ./qa.config ]] ; then
 fi
 
 # set network
-`Snetwork`
+`$network`
 
 # repository
 if [[ ! -d $repository ]] ; then
