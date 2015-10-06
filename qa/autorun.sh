@@ -35,4 +35,5 @@ wget -c -r -l 1 -nc -np -A "*.couch" -e robots=off http://download.ole.org/.qa/.
 ln -s download.ole.org/.qa/.content/ content
 
 
-# start one of the 3 scripts
+# start script
+`$respository/$directory/$script`
