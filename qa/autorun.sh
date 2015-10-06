@@ -25,14 +25,13 @@ else
 fi
 
 # newer autorun.sh?
-if [[ ! diff $directory/autorun.sh ../autorun.sh ]] ; then
+if [ ! diff $directory/autorun.sh ../autorun.sh ] ; then
   cp $directory/autorun.sh ../autorun.sh
 fi
 
 # wget qa content
 cd ..
 wget -c -r -l 1 -nc -np -A "*.couch" -e robots=off http://download.ole.org/.qa/.content/
-ln -s download.ole.org/.qa/.content/ content
 
 
 # start script
