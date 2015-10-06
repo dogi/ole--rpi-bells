@@ -24,7 +24,10 @@ else
   git pull
 fi
 
-# cp new autorun.sh over myself
+# newer autorun.sh?
+if [[ ! diff $directory/autorun.sh ../autorun.sh ]] ; then
+  cp $directory/autorun.sh ../autorun.sh
+fi
 
 # download qa content or check by sha1 if there is newer
 
