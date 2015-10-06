@@ -12,10 +12,18 @@ if [[ -r ./qa.config ]] ; then
     source ./qa.config
 fi
 
-#set network
+# set network
 `Snetwork`
 
-# git pull to get newest code, if not here create
+# repository
+if [[ ! -d $repository ]] ; then
+  git clone 'https://github.com/dogi/'$repository'.git'
+  cd $repository
+else
+  cd $repository
+  git pull
+fi
+
 # cp new autorun.sh over myself
 
 # download qa content or check by sha1 if there is newer
