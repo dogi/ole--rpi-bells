@@ -12,27 +12,31 @@ if [[ -r ./qa.config ]] ; then
     source ./qa.config
 fi
 
-# set network
-`$network`
-
-# repository
-if [[ ! -d $repository ]] ; then
-  git clone 'https://github.com/dogi/'$repository'.git'
-  cd $repository
+if [[ ! -e /boot/autorun.sh ]] ; then
+  # set network
+  `$network`
+  
+  # repository
+  if [[ ! -d $repository ]] ; then
+    git clone 'https://github.com/dogi/'$repository'.git'
+    cd $repository
+  else
+    cd $repository
+    git pull
+  fi
+  
+  # newer autorun.sh?
+  if [ !(diff $directory/autorun.sh ../autorun.sh) ] ; then
+    cp $directory/autorun.sh ../autorun.sh
+  fi
+  
+  # wget qa content
+  cd ..
+  wget -c -r -l 1 -nc -np -A "*.couch" -e robots=off http://download.ole.org/.qa/.content/
+  
+  
+  # start script
+  `$repository/$directory/$script`
 else
-  cd $repository
-  git pull
+  `/boot/autorun.sh`
 fi
-
-# newer autorun.sh?
-if [ !(diff $directory/autorun.sh ../autorun.sh) ] ; then
-  cp $directory/autorun.sh ../autorun.sh
-fi
-
-# wget qa content
-cd ..
-wget -c -r -l 1 -nc -np -A "*.couch" -e robots=off http://download.ole.org/.qa/.content/
-
-
-# start script
-`$repository/$directory/$script`
