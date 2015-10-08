@@ -7,7 +7,7 @@ bellport='5984'
 belluser=''
 bellpassword=''
 
-if [ ($belluser == '') ] ; then
+if [[ $belluser == '' ]] ; then
   auth=''
 else
   auth=$belluser':'$bellpassword'@'
