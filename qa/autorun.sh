@@ -6,8 +6,7 @@ repository='ole--rpi-bells'
 user='dogi'
 directory='qa'
 network=''
-#network='pirateship ethernet 204.9.221.79 255.255.255.128 204.9.221.1 "204.9.221.30 204.9.223.18 204.9.223.19"'
-script='2nations-autrunonce.sh'
+script='2nations-autorunonce.sh'
 
 # load local settings from qa.config file
 if [[ -r ./qa.config ]] ; then
