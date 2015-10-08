@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # default settings
-update=true
+#update=true
 repository='ole--rpi-bells'
-network='pirateship ethernet 204.9.221.79 255.255.255.128 204.9.221.1 "204.9.221.30 204.9.223.18 204.9.223.19"'
+user='dogi'
 directory='qa'
+network=''
+#network='pirateship ethernet 204.9.221.79 255.255.255.128 204.9.221.1 "204.9.221.30 204.9.223.18 204.9.223.19"'
 script='2nations-autrunonce.sh'
 
 # load local settings from qa.config file
@@ -18,7 +20,7 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   
   # repository
   if [[ ! -d $repository ]] ; then
-    git clone 'https://github.com/dogi/'$repository'.git'
+    git clone 'https://github.com/'$user'/'$repository'.git'
     cd $repository
   else
     cd $repository
@@ -37,6 +39,5 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   
   # start script
   `$repository/$directory/$script`
-else
-  `/boot/autorun.sh`
 fi
+`/boot/autorun.sh`
