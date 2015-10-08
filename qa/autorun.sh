@@ -15,7 +15,7 @@ fi
 
 if [[ ! -e /boot/autorun.sh ]] ; then
   # set network
-  `$network`
+  $network
   
   # repository
   if [[ ! -d $repository ]] ; then
@@ -37,6 +37,6 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   
   
   # start script
-  `$repository/$directory/$script`
+  $repository/$directory/$script
 fi
-`/boot/autorun.sh`
+/boot/autorun.sh
