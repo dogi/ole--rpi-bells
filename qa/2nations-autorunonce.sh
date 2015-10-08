@@ -50,6 +50,7 @@ function nation {
     wget http://download.ole.org/.qa/.content/resources.couch -O /srv/data/$1/resources.couch
   fi
   docker start $1
+  sleep 10
 
   node_modules/.bin/couchapp push databases/groups.js http://127.0.0.1:$2/groups
   node_modules/.bin/couchapp push databases/resources.js http://127.0.0.1:$2/resources
