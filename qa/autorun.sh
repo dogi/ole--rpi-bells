@@ -15,7 +15,10 @@ fi
 
 if [[ ! -e /boot/autorun.sh ]] ; then
   # set network
-  $network
+  if [[ $network != "" ]] ; then
+    $network
+    sleep 15
+  fi
   
   # repository
   if [[ ! -d $repository ]] ; then
@@ -27,7 +30,7 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   fi
   
   # newer autorun.sh?
-  if [ !(diff $directory/autorun.sh ../autorun.sh) ] ; then
+  if [ ! diff $directory/autorun.sh ../autorun.sh ] ; then
     cp $directory/autorun.sh ../autorun.sh
   fi
   
