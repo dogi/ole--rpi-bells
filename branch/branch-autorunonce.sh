@@ -23,7 +23,7 @@ sleep 20
 
 # branch
 # loop over all databases with function replicate
-for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d'`
+for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d' | sed '/configurations/ d'`
 do
   replicate $database
 done
