@@ -21,7 +21,7 @@ pirateship rename $name
 # template for continuous replication for databases
 function replicate {
   curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicator -d ' {"source": "http://'$auth$bell'/'$1'", "target": "http://127.0.0.1:5984/'$1'", "create_target": true, "continuous": true} '
-  curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicator -d ' {"source": "http://127.0.0.1:5984/'$1'", "target": "http://'$auth$bell'/'$1'", "continuous": true} '
+  #curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicator -d ' {"source": "http://127.0.0.1:5984/'$1'", "target": "http://'$auth$bell'/'$1'", "continuous": true} '
   #curl -X GET http://$auth$bell/$1/_security | xargs curl -H 'Content-Type: application/json' -X PUT http://127.0.0.1:5984/$1/_security -d {}
 }
 
