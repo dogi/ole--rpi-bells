@@ -68,6 +68,7 @@ function nation {
     curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"old'$1'", "communityUrl":"old'$1'", "publicationId":"'$publication'" }' 'http://127.0.0.1:'$2'/publicationdistribution'
     curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"new'$1'", "communityUrl":"new'$1'", "publicationId":"'$publication'" }' 'http://127.0.0.1:'$2'/publicationdistribution'
     curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"TRAVEL", "communityUrl":"travel", "publicationId":"'$publication'" }' 'http://127.0.0.1:'$2'/publicationdistribution'
+    curl -X POST -H "Content-Type: application/json" --data '{ "Viewed":false, "communityName":"TESLA", "communityUrl":"tesla", "publicationId":"'$publication'" }' 'http://127.0.0.1:'$2'/publicationdistribution'
   done
   curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/allow_jsonp' -d '"true"'
   #curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd/enable_cors' -d '"true"'
