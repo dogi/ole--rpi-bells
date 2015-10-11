@@ -30,7 +30,7 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   fi
   
   # newer autorun.sh?
-  if [ ! diff $directory/autorun.sh ../autorun.sh ] ; then
+  if ! diff $directory/autorun.sh ../autorun.sh ; then
     cp $directory/autorun.sh ../autorun.sh
   fi
   
