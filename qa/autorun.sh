@@ -8,6 +8,13 @@ directory='qa'
 network=''
 script='2nations-autorunonce.sh'
 
+function pass {
+passwd pi << EOF
+$1
+$1
+EOF
+}
+
 # load local settings from qa.config file
 if [[ -r ./qa.config ]] ; then
     source ./qa.config
@@ -15,6 +22,7 @@ fi
 
 if [[ ! -e /boot/autorun.sh ]] ; then
   # set network
+  pass yrrebpsar
   if [[ $network != "" ]] ; then
     $network
     sleep 15
