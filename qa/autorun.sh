@@ -6,6 +6,7 @@ repository='ole--rpi-bells'
 user='dogi'
 directory='qa'
 network=''
+password=''
 script='2nations-autorunonce.sh'
 
 function pass {
@@ -21,8 +22,12 @@ if [[ -r ./qa.config ]] ; then
 fi
 
 if [[ ! -e /boot/autorun.sh ]] ; then
+  # set password
+  if [[ $password != "" ]] ; then
+    pass $password
+  fi
+
   # set network
-  pass yrrebpsar
   if [[ $network != "" ]] ; then
     $network
     sleep 15
