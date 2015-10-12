@@ -36,6 +36,7 @@ if [[ ! -e /boot/autorun.sh ]] ; then
     cd $repository
     git pull
   fi
+  sync
   
   # newer autorun.sh?
   if ! diff $directory/autorun.sh ../autorun.sh ; then
