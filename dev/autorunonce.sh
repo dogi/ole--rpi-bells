@@ -12,6 +12,11 @@ $1
 EOF
 }
 
+# load local settings from qa.config file
+if [[ -r ./qa.config ]] ; then
+    source ./qa.config
+fi
+
 # set password
 if [[ $password != "" ]] ; then
   pass $password
