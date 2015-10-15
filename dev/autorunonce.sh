@@ -27,6 +27,7 @@ pirateship ethernet 204.9.221.59 255.255.255.128 204.9.221.1 "204.9.221.30 204.9
 sleep 20
 
 # dev grunt
+cd /root
 mkdir ole
 cd ole/
 wget https://github.com/open-learning-exchange/BeLL-Apps/archive/0.11.67.zip
