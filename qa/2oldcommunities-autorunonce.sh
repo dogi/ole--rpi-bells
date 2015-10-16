@@ -117,6 +117,6 @@ echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
 
 community old 5984 63
-community new 5985 67
+community new 5985 68
  
 reboot
