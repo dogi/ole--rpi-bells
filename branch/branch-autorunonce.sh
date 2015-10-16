@@ -28,6 +28,9 @@ do
   replicate $database
 done
 
+wget http://ftp.debian.org/debian/pool/main/j/jq/jq_1.4-1~bpo70+1_armhf.deb
+dpkg -i jq_1.4-1~bpo70+1_armhf.deb
+
 # write '/boot/autrun.sh'
 echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
