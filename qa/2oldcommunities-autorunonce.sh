@@ -110,6 +110,8 @@ function community {
   echo 'sleep 1' >> /boot/autorun.sh
   echo 'docker start '$1 >> /boot/autorun.sh
 
+  echo '"<a href=http://'$1'.local:'$2'/apps/_design/bell/MyApp/index.html>http://'$1'.local:'$2'/apps/_design/bell/MyApp/index.html</a><br/>"+' > /root/ole/server.temp
+
 }
 
 # write '/boot/autrun.sh'
@@ -126,7 +128,9 @@ echo "var express = require('express')" >> /root/ole/server.js
 echo 'var app = express()' >> /root/ole/server.js
 echo '' >> /root/ole/server.js
 echo "app.get('/', function(req, res) {" >> /root/ole/server.js
-echo '    res.send("<html>Hello</html>");' >> /root/ole/server.js
+echo '    res.send("<html>+"' >> /root/ole/server.js
+cat /root/ole/server.temp >> /root/ole/server.js
+echo '</html>");' >> /root/ole/server.js
 echo '});' >> /root/ole/server.js
 echo '' >> /root/ole/server.js
 echo 'app.listen(80);' >> /root/ole/server.js
