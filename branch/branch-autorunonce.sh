@@ -34,7 +34,7 @@ dpkg -i jq_1.4-1~bpo70+1_armhf.deb
 # configurations database
 curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicate -d ' {"source": "http://'$community'/configurations", "target": "http://127.0.0.1:5984/configurations", "create_target": true} '
 conf=`curl -X GET http://127.0.0.1:5984/configurations/_all_docs | sed '1d;$ d' | jq .id | tr -d '\"'`
-doc=`curl -X GET 'http://127.0.0.1:5984/configurations/'$conf | jq '.nationName=""' | jq '.nationUrl=""' | jq '.subType = "Branch"' | jq 'with_entries(select(.key != "_id"))'`
+doc=`curl -X GET 'http://127.0.0.1:5984/configurations/'$conf | jq '.nationName=""' | jq '.nationUrl=""' | jq '.subType = "branch"' | jq 'with_entries(select(.key != "_id"))'`
 curl -X PUT 'http://127.0.0.1:5984/configurations/'$conf -d "$doc"
 
 # write '/boot/autrun.sh'
