@@ -118,5 +118,25 @@ echo '' >> /boot/autorun.sh
 
 community old 5984 63
 community new 5985 68
+
+# write simple webpage with links
+echo '#!/usr/bin/env node' > /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo "var express = require('express')" >> /root/ole/server.js
+echo 'var app = express()' >> /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo "app.get('/', function(req, res) {" >> /root/ole/server.js
+echo '    res.sendFile("<html>Hello</html>");' >> /root/ole/server.js
+echo '});' >> /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo 'app.listen(80);' >> /root/ole/server.js
+chmod +x /root/ole/server.js
+cd /root/ole
+npm install express
+
+# add to '/boot/autorun.sh'
+echo '' >> /boot/autorun.sh
+echo 'node /root/ole/server.js' >> /boot/autorun.sh
+
  
 reboot
