@@ -5,6 +5,8 @@ name='branch'
 communityname='new.local'
 communityport='5984'
 
+#for win
+#community='192.168.0.99:5984'
 community="`getent hosts $communityname | awk '{ print $1 }'`:$communityport"
 
 # rename hostname of image to name
