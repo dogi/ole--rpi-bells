@@ -126,7 +126,7 @@ echo "var express = require('express')" >> /root/ole/server.js
 echo 'var app = express()' >> /root/ole/server.js
 echo '' >> /root/ole/server.js
 echo "app.get('/', function(req, res) {" >> /root/ole/server.js
-echo '    res.sendFile("<html>Hello</html>");' >> /root/ole/server.js
+echo '    res.send("<html>Hello</html>");' >> /root/ole/server.js
 echo '});' >> /root/ole/server.js
 echo '' >> /root/ole/server.js
 echo 'app.listen(80);' >> /root/ole/server.js
