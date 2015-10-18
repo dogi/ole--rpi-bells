@@ -128,9 +128,9 @@ echo "var express = require('express')" >> /root/ole/server.js
 echo 'var app = express()' >> /root/ole/server.js
 echo '' >> /root/ole/server.js
 echo "app.get('/', function(req, res) {" >> /root/ole/server.js
-echo '    res.send("<html>+"' >> /root/ole/server.js
+echo '    res.send("<html>"+' >> /root/ole/server.js
 cat /root/ole/server.temp >> /root/ole/server.js
-echo '</html>");' >> /root/ole/server.js
+echo '"</html>");' >> /root/ole/server.js
 echo '});' >> /root/ole/server.js
 echo '' >> /root/ole/server.js
 echo 'app.listen(80);' >> /root/ole/server.js
