@@ -110,6 +110,8 @@ function community {
   echo 'sleep 1' >> /boot/autorun.sh
   echo 'docker start '$1 >> /boot/autorun.sh
 
+  echo '"<a href=http://'$name'.local:'$2'/apps/_design/bell/MyApp/index.html>http://'$name'.local:'$2'/apps/_design/bell/MyApp/index.html</a> <a href=http://'$name'.local:'$2/_utils>http://'$name'.local:'$2'/_utils</a><br/>"+' >> /root/ole/server.temp
+
 }
 
 # write '/boot/autrun.sh'
@@ -118,5 +120,27 @@ echo '' >> /boot/autorun.sh
 
 community old 5984 63
 community new 5985 68
+
+# write simple webpage with links
+echo '#!/usr/bin/env node' > /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo "var express = require('express')" >> /root/ole/server.js
+echo 'var app = express()' >> /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo "app.get('/', function(req, res) {" >> /root/ole/server.js
+echo '    res.send("<html>"+' >> /root/ole/server.js
+cat /root/ole/server.temp >> /root/ole/server.js
+echo '"</html>");' >> /root/ole/server.js
+echo '});' >> /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo 'app.listen(80);' >> /root/ole/server.js
+chmod +x /root/ole/server.js
+cd /root/ole
+npm install express
+
+# add to '/boot/autorun.sh'
+echo '' >> /boot/autorun.sh
+echo 'node /root/ole/server.js' >> /boot/autorun.sh
+
  
 reboot
