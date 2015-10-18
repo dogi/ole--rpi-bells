@@ -110,7 +110,7 @@ function community {
   echo 'sleep 1' >> /boot/autorun.sh
   echo 'docker start '$1 >> /boot/autorun.sh
 
-  echo '"<a href=http://'$name'.local:'$2'/apps/_design/bell/MyApp/index.html>http://'$name'.local:'$2'/apps/_design/bell/MyApp/index.html</a> <a href=http://'$name'.local:'$2/_utils>http://'$name'.local:'$2'/_utils</a><br/>"+' >> /root/ole/server.temp
+  echo '"<a href=http://'$name'.local:'$2'/apps/_design/bell/MyApp/index.html>http://'$name'.local:'$2'/apps/_design/bell/MyApp/index.html</a> <a href=http://'$name'.local:'$2'/_utils>http://'$name'.local:'$2'/_utils</a><br/>"+' >> /root/ole/server.temp
 
 }
 
