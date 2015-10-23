@@ -9,6 +9,11 @@ communityport='5984'
 #community='192.168.0.99:5984'
 community="`getent hosts $communityname | awk '{ print $1 }'`:$communityport"
 
+# load local settings from branch.config file
+if [[ -r ./branch.config ]] ; then
+    source ./branch.config
+fi
+
 # rename hostname of image to name
 pirateship rename $name
 
