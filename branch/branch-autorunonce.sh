@@ -45,7 +45,6 @@ replicate calendar
 replicate collectionlist
 replicate communities
 replicate community
-replicate communityreports
 replicate courseschedule
 replicate coursestep
 replicate feedback
@@ -55,16 +54,17 @@ replicate languages
 replicate mail
 replicate meetups
 replicate membercourseprogress
-replicate members
 replicate nationreports
 replicate publicationdistribution
 replicate publications
 replicate report
 replicate requests
 replicate resourcefrequency
-replicate resources
 replicate shelf
 replicate usermeetups
+replicate members
+replicate communityreports
+replicate resources
 
 # write '/boot/autrun.sh'
 echo '#!/bin/sh' > /boot/autorun.sh
