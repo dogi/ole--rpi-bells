@@ -74,6 +74,7 @@ echo 'docker start '$name >> /boot/autorun.sh
 
 cd /usr/local/lib/node_modules/pirate-sh
 npm update
+pirateship expandfs
 sync
 sync
 sync
