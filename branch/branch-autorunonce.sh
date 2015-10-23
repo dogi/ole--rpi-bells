@@ -72,6 +72,8 @@ echo '' >> /boot/autorun.sh
 echo 'sleep 1' >> /boot/autorun.sh
 echo 'docker start '$name >> /boot/autorun.sh
 
+cd /usr/local/lib/node_modules/pirate-sh
+npm update
 sync
 sync
 sync
