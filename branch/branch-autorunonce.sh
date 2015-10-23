@@ -37,11 +37,34 @@ doc=`curl -X GET 'http://127.0.0.1:5984/configurations/'$conf | jq '.nationName=
 curl -X PUT 'http://127.0.0.1:5984/configurations/'$conf -d "$doc"
 
 # branch
-# loop over all databases with function replicate
-for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d' | sed '/configurations/ d'`
-do
-  replicate $database
-done
+replicate activitylog
+replicate apps
+replicate assignmentpaper
+replicate assignments
+replicate calendar
+replicate collectionlist
+replicate communities
+replicate community
+replicate communityreports
+replicate courseschedule
+replicate coursestep
+replicate feedback
+replicate groups
+replicate invitations
+replicate languages
+replicate mail
+replicate meetups
+replicate membercourseprogress
+replicate members
+replicate nationreports
+replicate publicationdistribution
+replicate publications
+replicate report
+replicate requests
+replicate resourcefrequency
+replicate resources
+replicate shelf
+replicate usermeetups
 
 # write '/boot/autrun.sh'
 echo '#!/bin/sh' > /boot/autorun.sh
