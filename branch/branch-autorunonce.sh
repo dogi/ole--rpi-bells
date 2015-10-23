@@ -26,14 +26,6 @@ function replicate {
 
 # create couchdb docker container
 docker run -d -p 5984:5984 --name $name -v /srv/data/$name:/usr/local/var/lib/couchdb -v /srv/log/$name:/usr/local/var/log/couchdb dogi/rpi-couchdb
-sleep 20
-
-# branch
-# loop over all databases with function replicate
-for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d' | sed '/configurations/ d'`
-do
-  replicate $database
-done
 
 wget http://ftp.debian.org/debian/pool/main/j/jq/jq_1.4-1~bpo70+1_armhf.deb
 dpkg -i jq_1.4-1~bpo70+1_armhf.deb
@@ -43,6 +35,13 @@ curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicat
 conf=`curl -X GET http://127.0.0.1:5984/configurations/_all_docs | sed '1d;$ d' | jq .id | tr -d '\"'`
 doc=`curl -X GET 'http://127.0.0.1:5984/configurations/'$conf | jq '.nationName=""' | jq '.nationUrl=""' | jq '.subType = "branch"' | jq 'with_entries(select(.key != "_id"))'`
 curl -X PUT 'http://127.0.0.1:5984/configurations/'$conf -d "$doc"
+
+# branch
+# loop over all databases with function replicate
+for database in `curl -X GET http://$community/_all_dbs | tr -d '[\[\"\]]' | tr , '\n' | sed '/^_/ d' | sed '/configurations/ d'`
+do
+  replicate $database
+done
 
 # write '/boot/autrun.sh'
 echo '#!/bin/sh' > /boot/autorun.sh
