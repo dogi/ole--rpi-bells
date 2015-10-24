@@ -2,6 +2,7 @@
 
 #variables
 name='branch'
+ip='192.168.0.99'
 communityname='new.local'
 communityport='5984'
 
@@ -76,9 +77,40 @@ echo '' >> /boot/autorun.sh
 echo 'sleep 1' >> /boot/autorun.sh
 echo 'docker start '$name >> /boot/autorun.sh
 
+# expand filesystem
 cd /usr/local/lib/
 npm update
 pirateship expandfs
+
+# redirect to bell
+mkdir -p /root/ole
+echo '#!/usr/bin/env node' > /root/ole/server.js
+echo '' >> /root/ole/server.js
+echo "var express = require('express')" >> /root/ole/server.js
+echo 'var PortJack = express()' >> /root/ole/server.js
+echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
+echo 'var options = {' >> /root/ole/server.js
+echo '"'$name'.local": "http://'$name'.local:5984/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.js
+echo '"'$ip'": "http://'$ip':5984/apps/_design/bell/MyApp/index.html"' >> /root/ole/server.js
+echo '}' >> /root/ole/server.js
+echo 'if (options.hasOwnProperty(req.hostname)) {' >> /root/ole/server.js
+echo "res.setHeader('Location', options[req.hostname])" >> /root/ole/server.js
+echo '}' >> /root/ole/server.js
+echo 'else {' >> /root/ole/server.js
+echo "res.setHeader('Location', 'http://ole.org')" >> /root/ole/server.js
+echo '}' >> /root/ole/server.js
+echo 'res.statusCode = 302' >> /root/ole/server.js
+echo 'res.end()' >> /root/ole/server.js
+echo '})' >> /root/ole/server.js
+echo 'PortJack.listen(80)' >> /root/ole/server.js
+chmod +x /root/ole/server.js
+cd /root/ole
+npm install express
+
+# add to '/boot/autorun.sh'
+echo '' >> /boot/autorun.sh
+echo 'node /root/ole/server.js' >> /boot/autorun.sh
+
 sync
 sync
 sync
