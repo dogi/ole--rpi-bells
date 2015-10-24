@@ -30,6 +30,10 @@ docker run -d -p 5984:5984 --name $name -v /srv/data/$name:/usr/local/var/lib/co
 wget http://ftp.debian.org/debian/pool/main/j/jq/jq_1.4-1~bpo70+1_armhf.deb
 dpkg -i jq_1.4-1~bpo70+1_armhf.deb
 
+while ! curl -X GET http://127.0.0.1:5984/_all_dbs ; do
+  sleep 1
+done
+
 # configurations database
 curl -H 'Content-Type: application/json' -X POST http://127.0.0.1:5984/_replicate -d ' {"source": "http://'$community'/configurations", "target": "http://127.0.0.1:5984/configurations", "create_target": true} '
 conf=`curl -X GET http://127.0.0.1:5984/configurations/_all_docs | sed '1d;$ d' | jq .id | tr -d '\"'`
@@ -72,7 +76,7 @@ echo '' >> /boot/autorun.sh
 echo 'sleep 1' >> /boot/autorun.sh
 echo 'docker start '$name >> /boot/autorun.sh
 
-cd /usr/local/lib/node_modules/pirate-sh
+cd /usr/local/lib/
 npm update
 pirateship expandfs
 sync
