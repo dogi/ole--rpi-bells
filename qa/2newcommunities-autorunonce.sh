@@ -64,6 +64,8 @@ function community {
 
   ## add bare minimal required data to couchdb for launching bell-apps smoothly
   curl -d @init_docs/languages.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/languages
+  curl -d @init_docs/languages-Urdu.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/languages
+  curl -d @init_docs/languages-Arabic.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/languages
   curl -d @init_docs/ConfigurationsDoc-Community.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/configurations
   curl -d @init_docs/admin.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/members
 
