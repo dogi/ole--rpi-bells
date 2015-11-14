@@ -34,6 +34,11 @@ function nation {
   sed -i 's/NationBell/'$1'QA/' init_docs/ConfigurationsDoc-Nation.txt
   sed -i 's/nationbell/'$1'/' init_docs/ConfigurationsDoc-Nation.txt
 
+  # check if docker is running
+  while ! curl -X GET http://127.0.0.1:$2/_all_dbs ; do
+    sleep 1
+  done
+
   # install nation
   node install_linux http://127.0.0.1:$2
 
@@ -50,7 +55,11 @@ function nation {
     wget http://download.ole.org/.qa/.content/resources.couch -O /srv/data/$1/resources.couch
   fi
   docker start $1
-  sleep 10
+
+  # check if docker is running
+  while ! curl -X GET http://127.0.0.1:$2/_all_dbs ; do
+    sleep 1
+  done
 
   node_modules/.bin/couchapp push databases/groups.js http://127.0.0.1:$2/groups
   node_modules/.bin/couchapp push databases/resources.js http://127.0.0.1:$2/resources
