@@ -120,8 +120,8 @@ function community {
 echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
 
-community old 5984 80
-community new 5985 82
+community old 5984 82
+community new 5985 83
 
 # write simple webpage with links
 echo '#!/usr/bin/env node' > /root/ole/server.js
