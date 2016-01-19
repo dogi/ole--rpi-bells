@@ -114,8 +114,8 @@ echo '' >> /boot/autorun.sh
 
 
 # install an old and a new nation
-nation old 5984 82
-nation new 5985 91
+nation old 5984 91
+nation new 5985 92
 
 
 
