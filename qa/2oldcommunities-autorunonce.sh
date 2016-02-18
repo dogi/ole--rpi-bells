@@ -121,7 +121,7 @@ echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
 
 community old 5984 92
-community new 5985 100
+community new 5985 101
 
 # write simple webpage with links
 echo '#!/usr/bin/env node' > /root/ole/server.js
