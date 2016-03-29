@@ -30,8 +30,8 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   # set network
   if [[ $network != "" ]] ; then
     $network
-    sleep 15
   fi
+  sleep 15
   
   # repository
   if [[ ! -d $repository ]] ; then
