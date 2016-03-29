@@ -19,7 +19,7 @@ function nation {
   # download BeLL-Apps
   mkdir -p /root/ole/$3
   cd /root/ole/$3
-  wget https://github.com/open-learning-exchange/BeLL-Apps/archive/0.11.$3.zip
+  wget https://github.com/open-learning-exchange/BeLL-Apps/archive/$3.zip
   unzip *.zip
   ln -s BeLL-Apps-* BeLL-Apps
   cd BeLL-Apps
@@ -103,7 +103,7 @@ function nation {
 
   # add to proxy
   echo '"'$1'.qa.ole.org": "http://'$1'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
-  echo '"'$3'.qa.ole.org": "http://'$3'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
+  #echo '"'$3'.qa.ole.org": "http://'$3'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
 
 }
 
@@ -114,8 +114,8 @@ echo '' >> /boot/autorun.sh
 
 
 # install an old and a new nation
-nation old 5984 92
-nation new 5985 111
+nation old 5984 0.11.111
+nation new 5985 0.12.0
 
 
 

@@ -18,7 +18,7 @@ function community {
   # download BeLL-Apps
   mkdir -p /root/ole/$3
   cd /root/ole/$3
-  wget https://github.com/open-learning-exchange/BeLL-Apps/archive/0.11.$3.zip
+  wget https://github.com/open-learning-exchange/BeLL-Apps/archive/$3.zip
   unzip *.zip
   ln -s BeLL-Apps-* BeLL-Apps
   cd BeLL-Apps
@@ -120,8 +120,8 @@ function community {
 echo '#!/bin/sh' > /boot/autorun.sh
 echo '' >> /boot/autorun.sh
 
-community old 5984 92
-community new 5985 111
+community old 5984 0.11.111
+community new 5985 0.12.0
 
 # write simple webpage with links
 echo '#!/usr/bin/env node' > /root/ole/server.js
