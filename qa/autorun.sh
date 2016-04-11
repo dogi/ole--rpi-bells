@@ -31,8 +31,12 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   if [[ $network != "" ]] ; then
     $network
   fi
-  sleep 15
-  
+
+  # check if still/again online
+  while ! curl -X GET http://github.com ; do
+    sleep 1
+  done
+
   # repository
   if [[ ! -d $repository ]] ; then
     git clone 'https://github.com/'$user'/'$repository'.git'
@@ -42,17 +46,17 @@ if [[ ! -e /boot/autorun.sh ]] ; then
     git pull
   fi
   sync
-  
+
   # newer autorun.sh?
   if ! diff $directory/autorun.sh ../autorun.sh ; then
     cp $directory/autorun.sh ../autorun.sh
   fi
-  
+
   # wget qa content
   cd ..
   wget -c -r -l 1 -nc -np -A "*.couch" -e robots=off http://download.ole.org/.qa/.content/
-  
-  
+
+
   # start script
   $repository/$directory/$script
 fi
