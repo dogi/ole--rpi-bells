@@ -40,12 +40,9 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   # repository
   if [[ ! -d $repository ]] ; then
     git clone 'https://github.com/'$user'/'$repository'.git'
-    cd $repository
-  else
-    cd $repository
-    git pull
   fi
-  sync
+  cd $repository
+  git pull
 
   # newer autorun.sh?
   if ! diff $directory/autorun.sh ../autorun.sh ; then
@@ -56,6 +53,9 @@ if [[ ! -e /boot/autorun.sh ]] ; then
   cd ..
   wget -c -r -l 1 -nc -np -A "*.couch" -e robots=off http://download.ole.org/.qa/.content/
 
+  sync
+  sync
+  sync
 
   # start script
   $repository/$directory/$script
