@@ -53,6 +53,8 @@ function nation {
     wget http://download.ole.org/.qa/.content/groups.couch -O /srv/data/$1/groups.couch
     wget http://download.ole.org/.qa/.content/publications.couch -O /srv/data/$1/publications.couch
     wget http://download.ole.org/.qa/.content/resources.couch -O /srv/data/$1/resources.couch
+    wget http://download.ole.org/.qa/.content/survey.couch -O /srv/data/$1/survey.couch
+    wget http://download.ole.org/.qa/.content/surveyquestions.couch -O /srv/data/$1/surveyquestions.couch
   fi
   docker start $1
 
@@ -66,6 +68,8 @@ function nation {
   node_modules/.bin/couchapp push databases/publications.js http://127.0.0.1:$2/publications
   node_modules/.bin/couchapp push databases/collectionlist.js http://127.0.0.1:$2/collectionlist
   node_modules/.bin/couchapp push databases/coursestep.js http://127.0.0.1:$2/coursestep
+  node_modules/.bin/couchapp push databases/survey.js http://127.0.0.1:$2/survey
+  node_modules/.bin/couchapp push databases/surveyquestions.js http://127.0.0.1:$2/surveyquestions
 
   # add users
   curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:'$2'/members' --data '{"kind":"Member","roles":["Learner"],"bellLanguage":"English","firstName":"a","lastName":"a","middleNames":"a","login":"a","password":"a","phone":"a","email":"a@a","language":"","BirthDate":"2010-10-15T04:00:00.000Z","visits":0,"Gender":"Male","levels":"1","status":"active","yearsOfTeaching":null,"teachingCredentials":null,"subjectSpecialization":null,"forGrades":null,"community":"'$1'","region":"","nation":"earthbell","lastLoginDate":"2015-01-01T04:00:00.000Z","lastEditDate":"2015-01-01T04:00:00.000Z"}'
