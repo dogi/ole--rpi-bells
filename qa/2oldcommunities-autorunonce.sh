@@ -27,6 +27,7 @@ function community {
   sed -i 's/communitybell/'$1$name'/' init_docs/ConfigurationsDoc-Community.txt
   sed -i 's/openbell.ole.org:5984/'$name'.qa.ole.org:'$port'/' init_docs/ConfigurationsDoc-Community.txt
   sed -i 's/openbell/nation/' init_docs/ConfigurationsDoc-Community.txt
+  echo '{"login": "admin","kind": "Member","roles":["Manager","SuperManager"],"firstName": "Default","lastName": "Admin","password":"password","Gender":"Female","status":"active","email":"admin.'$1$name'@olebell.org","visits":0,"bellLanguage":"English","BirthDate":"1995-01-01T00:00:00.000Z","community": "'$1$name'"}' > init_docs/admin.txt
 
 
   # install community
