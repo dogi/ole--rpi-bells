@@ -48,14 +48,15 @@ function nation {
   docker stop $1
   if [[ -e /data/download.ole.org/.qa/.content ]] ; then
     cp /data/download.ole.org/.qa/.content/*.couch /srv/data/$1/.
+    cp /data/download.ole.org/.qa/.content/$1/*.couch /srv/data/$1/.
   else
     wget http://download.ole.org/.qa/.content/collectionlist.couch -O /srv/data/$1/collectionlist.couch
     wget http://download.ole.org/.qa/.content/coursestep.couch -O /srv/data/$1/coursestep.couch
     wget http://download.ole.org/.qa/.content/groups.couch -O /srv/data/$1/groups.couch
     wget http://download.ole.org/.qa/.content/publications.couch -O /srv/data/$1/publications.couch
     wget http://download.ole.org/.qa/.content/resources.couch -O /srv/data/$1/resources.couch
-    wget http://download.ole.org/.qa/.content/survey.couch -O /srv/data/$1/survey.couch
-    wget http://download.ole.org/.qa/.content/surveyquestions.couch -O /srv/data/$1/surveyquestions.couch
+    wget http://download.ole.org/.qa/.content/$1/survey.couch -O /srv/data/$1/survey.couch
+    wget http://download.ole.org/.qa/.content/$1/surveyquestions.couch -O /srv/data/$1/surveyquestions.couch
   fi
   docker start $1
 
