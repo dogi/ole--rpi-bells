@@ -33,7 +33,10 @@ function nation {
   sed -i 's#databases\\\\#databases/#' install_linux
   sed -i 's/NationBell/'$1'QA/' init_docs/ConfigurationsDoc-Nation.txt
   sed -i 's/nationbell/'$1'/' init_docs/ConfigurationsDoc-Nation.txt
-  echo '{"login": "admin","kind": "Member","roles":["Manager","SuperManager"],"firstName": "Default","lastName": "Admin","password":"password","Gender":"Female","status":"active","email":"admin.'$1'@olebell.org","visits":0,"bellLanguage":"English","BirthDate":"1995-01-01T00:00:00.000Z","community": "'$1'"}' > init_docs/admin.txt
+  #echo '{"login": "admin","kind": "Member","roles":["Manager","SuperManager"],"firstName": "Default","lastName": "Admin","password":"password","Gender":"Female","status":"active","email":"admin.'$1'@olebell.org","visits":0,"bellLanguage":"English","BirthDate":"1995-01-01T00:00:00.000Z","community": "'$1'"}' > init_docs/admin.txt
+  sed -i 's#Male#Female#' install_linux
+  sed -i 's#somalia#'$1'#' install_linux
+  sed -i 's#"visits": 0#"visits":0,"bellLanguage":"English","BirthDate":"2010-10-15T04:00:00.000Z","community":"'$1'"#' install_linux
 
   # check if docker is running
   while ! curl -X GET http://127.0.0.1:$2/_all_dbs ; do
