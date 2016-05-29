@@ -76,6 +76,11 @@ function nation {
   node_modules/.bin/couchapp push databases/survey.js http://127.0.0.1:$2/survey
   node_modules/.bin/couchapp push databases/surveyquestions.js http://127.0.0.1:$2/surveyquestions
 
+  # favicon.ico
+  wget https://open-learning-exchange.github.io/favicon.ico
+  mv favicon.ico /srv/data/bell/.
+  curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd_global_handlers/favicon.ico' -d '"{couch_httpd_misc_handlers, handle_favicon_req, \"/usr/local/var/lib/couchdb\"}"'
+
   # add users
   curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:'$2'/members' --data '{"kind":"Member","roles":["Learner"],"bellLanguage":"English","firstName":"a","lastName":"a","middleNames":"a","login":"a","password":"a","phone":"a","email":"a@a","language":"","BirthDate":"2010-10-15T04:00:00.000Z","visits":0,"Gender":"Male","levels":"1","status":"active","yearsOfTeaching":null,"teachingCredentials":null,"subjectSpecialization":null,"forGrades":null,"community":"'$1'","region":"","nation":"earthbell","lastLoginDate":"2015-01-01T04:00:00.000Z","lastEditDate":"2015-01-01T04:00:00.000Z"}'
   curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:'$2'/members' --data '{"kind":"Member","roles":["Learner"],"bellLanguage":"English","firstName":"b","lastName":"b","middleNames":"b","login":"b","password":"b","phone":"b","email":"b@b","language":"","BirthDate":"2010-10-15T04:00:00.000Z","visits":0,"Gender":"Female","levels":"1","status":"active","yearsOfTeaching":null,"teachingCredentials":null,"subjectSpecialization":null,"forGrades":null,"community":"'$1'","region":"","nation":"earthbell","lastLoginDate":"2015-01-01T04:00:00.000Z","lastEditDate":"2015-01-01T04:00:00.000Z"}'
