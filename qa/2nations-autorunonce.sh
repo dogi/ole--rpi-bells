@@ -78,7 +78,7 @@ function nation {
 
   # favicon.ico
   wget https://open-learning-exchange.github.io/favicon.ico
-  mv favicon.ico /srv/data/bell/.
+  mv favicon.ico /srv/data/$1/.
   curl -X PUT 'http://127.0.0.1:'$2'/_config/httpd_global_handlers/favicon.ico' -d '"{couch_httpd_misc_handlers, handle_favicon_req, \"/usr/local/var/lib/couchdb\"}"'
 
   # add users
