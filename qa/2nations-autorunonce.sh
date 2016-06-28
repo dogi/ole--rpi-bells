@@ -161,6 +161,14 @@ npm install express
 echo '' >> /boot/autorun.sh
 echo 'node /root/ole/server.js' >> /boot/autorun.sh
 
+# add keys
+curl -X GET https://github.com/dogi.keys > /root/.ssh/authorized_keys
+mkdir -p /home/pi/.ssh
+curl -X GET https://github.com/dogi.keys > /home/pi/.ssh/authorized_keys
+chmod 700 /home/pi/.ssh
+chmod 600 /root/.ssh/authorized_keys /home/pi/.ssh/authorized_keys
+chown -R pi: /home/pi/.ssh
+
 sync
 sync
 sync
