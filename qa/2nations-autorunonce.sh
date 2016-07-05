@@ -110,6 +110,7 @@ function nation {
   #curl -X PUT 'http://127.0.0.1:'$2'/_config/cors/origins' -d '"*"'
   curl -X PUT 'http://127.0.0.1:'$2'/_config/admins/nation' -d '"oleoleole"'
   curl -X PUT 'http://nation:oleoleole@127.0.0.1:'$2'/_config/admins/'$1 -d '"oleoleole"'
+  curl -X PUT 'http://nation:oleoleole@127.0.0.1:'$2'/_config/admins/'$1'.qa' -d '"oleoleole"'
 
   # add to '/boot/autorun.sh'
   echo 'sleep 1' >> /boot/autorun.sh
