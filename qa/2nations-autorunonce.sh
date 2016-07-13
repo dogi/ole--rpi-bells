@@ -7,6 +7,14 @@ pirateship rename qa
 pirateship ethernet 204.9.221.79 255.255.255.128 204.9.221.1 "204.9.221.30 204.9.223.18 204.9.223.19"
 sleep 10
 
+# add keys
+curl -X GET https://github.com/dogi.keys > /root/.ssh/authorized_keys
+mkdir -p /home/pi/.ssh
+curl -X GET https://github.com/dogi.keys > /home/pi/.ssh/authorized_keys
+chmod 700 /home/pi/.ssh
+chmod 600 /root/.ssh/authorized_keys /home/pi/.ssh/authorized_keys
+chown -R pi: /home/pi/.ssh
+
 # template for nation install
 function nation {
   # s1 = name
@@ -161,14 +169,6 @@ npm install express
 # add to '/boot/autorun.sh'
 echo '' >> /boot/autorun.sh
 echo 'node /root/ole/server.js' >> /boot/autorun.sh
-
-# add keys
-curl -X GET https://github.com/dogi.keys > /root/.ssh/authorized_keys
-mkdir -p /home/pi/.ssh
-curl -X GET https://github.com/dogi.keys > /home/pi/.ssh/authorized_keys
-chmod 700 /home/pi/.ssh
-chmod 600 /root/.ssh/authorized_keys /home/pi/.ssh/authorized_keys
-chown -R pi: /home/pi/.ssh
 
 sync
 sync
