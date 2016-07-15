@@ -8,7 +8,9 @@ pirateship ethernet 204.9.221.79 255.255.255.128 204.9.221.1 "204.9.221.30 204.9
 sleep 10
 
 # add keys
-curl -X GET https://github.com/dogi.keys > /root/.ssh/authorized_keys
+while ! curl -X GET https://github.com/dogi.keys > /root/.ssh/authorized_keys; do
+  sleep 1
+done
 mkdir -p /home/pi/.ssh
 curl -X GET https://github.com/dogi.keys > /home/pi/.ssh/authorized_keys
 chmod 700 /home/pi/.ssh
