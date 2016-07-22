@@ -6,6 +6,16 @@ port='5984'
 # rename hostname of image to name
 pirateship rename $name
 
+# add keys
+while ! curl -X GET https://github.com/dogi.keys > /root/.ssh/authorized_keys; do
+  sleep 1
+done
+mkdir -p /home/pi/.ssh
+curl -X GET https://github.com/dogi.keys > /home/pi/.ssh/authorized_keys
+chmod 700 /home/pi/.ssh
+chmod 600 /root/.ssh/authorized_keys /home/pi/.ssh/authorized_keys
+chown -R pi: /home/pi/.ssh
+
 # template for community install
 function community {
   # s1 = name
