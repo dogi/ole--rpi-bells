@@ -143,6 +143,8 @@ nation old 5984 0.12.27
 nation new 5985 0.12.53
 
 docker run -d -p 5983:5984 --name center -v /srv/data/center:/usr/local/var/lib/couchdb -v /srv/log/center:/usr/local/var/log/couchdb dogi/rpi-couchdb
+curl -X PUT http://127.0.0.1:5983/communityregistrationrequests
+curl -X PUT http://127.0.0.1:5983/nations
 
 
 # write proxy
