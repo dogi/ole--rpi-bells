@@ -47,6 +47,7 @@ function nation {
   sed -i 's#Male#Female#' install_linux
   sed -i 's#somalia#'$1'#' install_linux
   sed -i 's#"visits": 0#"visits":0,"bellLanguage":"English","BirthDate":"2010-10-15T04:00:00.000Z","community":"'$1'"#' install_linux
+  sed -i 's#nbs.ole.org:5997#center.qa.ole.org:5983#' init_docs/ConfigurationsDoc-Nation.txt
 
   # check if docker is running
   while ! curl -X GET http://127.0.0.1:$2/_all_dbs ; do
