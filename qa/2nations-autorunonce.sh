@@ -148,6 +148,7 @@ curl -X PUT http://127.0.0.1:5983/communityregistrationrequests
 curl -X PUT http://127.0.0.1:5983/nations
 node_modules/.bin/couchapp push databases/communityregistrationrequests.js http://127.0.0.1:5983/communityregistrationrequests
 node_modules/.bin/couchapp push databases/nations.js http://127.0.0.1:5983/nations
+curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:5983/nations' --data '{"nationurl":"old.qa.ole.org:5984","type":"nation","region":"qa","admin_name":"nation","name":"old.qa"}'
 curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:5983/nations' --data '{"nationurl":"new.qa.ole.org:5985","type":"nation","region":"qa","admin_name":"nation","name":"new.qa"}'
 
 # write proxy
