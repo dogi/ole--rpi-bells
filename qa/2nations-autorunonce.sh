@@ -145,6 +145,9 @@ nation new 5985 0.12.54
 
 #center
 docker run -d -p 5983:5984 --name center -v /srv/data/center:/usr/local/var/lib/couchdb -v /srv/log/center:/usr/local/var/log/couchdb dogi/rpi-couchdb
+# add to '/boot/autorun.sh'
+echo 'sleep 1' >> /boot/autorun.sh
+echo 'docker start center' >> /boot/autorun.sh
 # check if docker is running
 while ! curl -X GET http://127.0.0.1:5983/_all_dbs ; do
   sleep 1
