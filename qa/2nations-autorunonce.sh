@@ -143,7 +143,12 @@ echo '' >> /boot/autorun.sh
 nation old 5984 0.12.27
 nation new 5985 0.12.54
 
+#center
 docker run -d -p 5983:5984 --name center -v /srv/data/center:/usr/local/var/lib/couchdb -v /srv/log/center:/usr/local/var/log/couchdb dogi/rpi-couchdb
+# check if docker is running
+while ! curl -X GET http://127.0.0.1:5983/_all_dbs ; do
+  sleep 1
+done
 curl -X PUT http://127.0.0.1:5983/communityregistrationrequests
 curl -X PUT http://127.0.0.1:5983/nations
 node_modules/.bin/couchapp push databases/communityregistrationrequests.js http://127.0.0.1:5983/communityregistrationrequests
