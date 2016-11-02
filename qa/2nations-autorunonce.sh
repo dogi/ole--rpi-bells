@@ -159,6 +159,7 @@ node_modules/.bin/couchapp push databases/nations.js http://127.0.0.1:5983/natio
 curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:5983/nations' --data '{"nationurl":"old.qa.ole.org:5984","type":"nation","region":"qa","admin_name":"nation","name":"old.qa"}'
 curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:5983/nations' --data '{"nationurl":"new.qa.ole.org:5985","type":"nation","region":"qa","admin_name":"nation","name":"new.qa"}'
 curl -X PUT 'http://127.0.0.1:5983/_config/httpd/allow_jsonp' -d '"true"'
+curl -X PUT 'http://127.0.0.1:5983/_config/admins/nation' -d '"oleoleole"'
 
 # write proxy
 echo '#!/usr/bin/env node' > /root/ole/server.js
