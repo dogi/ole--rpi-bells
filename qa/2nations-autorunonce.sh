@@ -129,6 +129,7 @@ function nation {
 
   # add to proxy
   echo '"'$1'.qa.ole.org": "http://'$1'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
+  echo '"'$2'.qa.ole.org": "http://'$1'.qa.ole.org:'$2'/_utils",' >> /root/ole/server.temp
   #echo '"'$3'.qa.ole.org": "http://'$3'.qa.ole.org:'$2'/apps/_design/bell/MyApp/index.html",' >> /root/ole/server.temp
 
 }
