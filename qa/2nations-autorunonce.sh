@@ -150,6 +150,7 @@ docker run -d -p 5983:5984 --name center -v /srv/data/center:/usr/local/var/lib/
 echo 'sleep 1' >> /boot/autorun.sh
 echo 'docker start center' >> /boot/autorun.sh
 echo '"center.qa.ole.org": "http://center.qa.ole.org:5983/_utils",' >> /root/ole/server.temp
+echo '"5983.qa.ole.org": "http://center.qa.ole.org:5983/_utils",' >> /root/ole/server.temp
 # check if docker is running
 while ! curl -X GET http://127.0.0.1:5983/_all_dbs ; do
   sleep 1
