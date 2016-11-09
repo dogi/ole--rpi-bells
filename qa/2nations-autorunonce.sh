@@ -169,6 +169,7 @@ echo 'var PortJack = express()' >> /root/ole/server.js
 echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
 echo 'var options = {' >> /root/ole/server.js
 cat /root/ole/server.temp >> /root/ole/server.js
+echo '"center.qa.ole.org": "http://center.qa.ole.org:5983/_utils",' >> /root/ole/server.js
 echo '"qa.ole.org": "http://ole.org/our-team/"' >> /root/ole/server.js
 echo '}' >> /root/ole/server.js
 echo 'if (options.hasOwnProperty(req.hostname)) {' >> /root/ole/server.js
