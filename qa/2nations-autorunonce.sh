@@ -149,6 +149,7 @@ docker run -d -p 5983:5984 --name center -v /srv/data/center:/usr/local/var/lib/
 # add to '/boot/autorun.sh'
 echo 'sleep 1' >> /boot/autorun.sh
 echo 'docker start center' >> /boot/autorun.sh
+echo '"center.qa.ole.org": "http://center.qa.ole.org:5983/_utils",' >> /root/ole/server.temp
 # check if docker is running
 while ! curl -X GET http://127.0.0.1:5983/_all_dbs ; do
   sleep 1
@@ -170,7 +171,6 @@ echo 'var PortJack = express()' >> /root/ole/server.js
 echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
 echo 'var options = {' >> /root/ole/server.js
 cat /root/ole/server.temp >> /root/ole/server.js
-echo '"center.qa.ole.org": "http://center.qa.ole.org:5983/_utils",' >> /root/ole/server.js
 echo '"qa.ole.org": "http://ole.org/our-team/"' >> /root/ole/server.js
 echo '}' >> /root/ole/server.js
 echo 'if (options.hasOwnProperty(req.hostname)) {' >> /root/ole/server.js
