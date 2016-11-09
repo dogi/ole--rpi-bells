@@ -172,7 +172,7 @@ echo 'var PortJack = express()' >> /root/ole/server.js
 echo 'PortJack.get(/^(.+)$/, function(req, res) {' >> /root/ole/server.js
 echo 'var options = {' >> /root/ole/server.js
 cat /root/ole/server.temp >> /root/ole/server.js
-echo '"qa.ole.org": "http://ole.org/our-team/"' >> /root/ole/server.js
+echo '"qa.ole.org": "https://cloud.githubusercontent.com/assets/11721132/10255448/7dc8985e-6918-11e5-94d4-198837a1e357.png"' >> /root/ole/server.js
 echo '}' >> /root/ole/server.js
 echo 'if (options.hasOwnProperty(req.hostname)) {' >> /root/ole/server.js
 echo "res.setHeader('Location', options[req.hostname])" >> /root/ole/server.js
