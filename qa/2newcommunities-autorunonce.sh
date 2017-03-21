@@ -58,7 +58,7 @@ function community {
     curl -d @$filename -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/languages;
   done
   curl -d @init_docs/ConfigurationsDoc-Community.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/configurations
-  curl -d @init_docs/admin.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/members
+  #curl -d @init_docs/admin.txt -H "Content-Type: application/json" -X POST http://127.0.0.1:$2/members
 
   # favicon.ico
   wget https://open-learning-exchange.github.io/favicon.ico
