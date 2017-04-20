@@ -32,6 +32,16 @@ function community {
   unzip *.zip
   ln -s BeLL-Apps-* BeLL-Apps
   cd BeLL-Apps
+  cd app
+  if [ -f minify_html.py ]; then
+    python minify_html.py
+    mv MyApp/index.html MyApp/index1.html
+    mv MyApp/index2.html MyApp/index.html
+    mv nation/index.html nation/index1.html
+    mv nation/index2.html nation/index.html
+  fi
+  cd ..
+
   chmod +x node_modules/.bin/couchapp
   sed -i 's/TestCommunity/'$1$name'/' init_docs/ConfigurationsDoc-Community.txt
   sed -i 's/communitybell/'$1$name'/' init_docs/ConfigurationsDoc-Community.txt

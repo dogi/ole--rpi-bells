@@ -33,6 +33,16 @@ function nation {
   unzip *.zip
   ln -s BeLL-Apps-* BeLL-Apps
   cd BeLL-Apps
+  cd app
+  if [ -f minify_html.py ]; then
+    python minify_html.py
+    mv MyApp/index.html MyApp/index1.html
+    mv MyApp/index2.html MyApp/index.html
+    mv nation/index.html nation/index1.html
+    mv nation/index2.html nation/index.html
+  fi
+  cd ..
+
   chmod +x node_modules/.bin/couchapp
 
   # create install_linux
