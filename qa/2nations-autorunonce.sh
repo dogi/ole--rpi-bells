@@ -105,7 +105,7 @@ function nation {
 
   # force higher rev
   increvdb activitylog $2
-  increvdb assigmentpaper $2
+  increvdb assignmentpaper $2
   increvdb membercourseprogress $2
   increvdb members $2
 
