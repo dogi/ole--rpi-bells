@@ -20,7 +20,7 @@ chown -R pi: /home/pi/.ssh
 function increvdb {
   # s1 = database
   # s2 = port
-  curl -X PUT 'http://nation:oleoleole@127.0.0.1:'$2'/'$1'/_design/bell' -d "`curl -X GET 'http://127.0.0.1:'$2'/'$1'/_design/bell'`"
+  curl -X PUT 'http://127.0.0.1:'$2'/'$1'/_design/bell' -d "`curl -X GET 'http://127.0.0.1:'$2'/'$1'/_design/bell'`"
 }
 
 # template for nation install
