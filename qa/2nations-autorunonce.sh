@@ -17,6 +17,12 @@ chmod 700 /home/pi/.ssh
 chmod 600 /root/.ssh/authorized_keys /home/pi/.ssh/authorized_keys
 chown -R pi: /home/pi/.ssh
 
+function increvdb {
+  # s1 = database
+  # s2 = port
+  curl -X PUT 'http://nation:oleoleole@127.0.0.1:'$2'/'$1'/_design/bell' -d "`curl -X GET 'http://127.0.0.1:'$2'/'$1'/_design/bell'`"
+}
+
 # template for nation install
 function nation {
   # s1 = name
@@ -96,6 +102,12 @@ function nation {
   node_modules/.bin/couchapp push databases/coursestep.js http://127.0.0.1:$2/coursestep
   node_modules/.bin/couchapp push databases/survey.js http://127.0.0.1:$2/survey
   node_modules/.bin/couchapp push databases/surveyquestions.js http://127.0.0.1:$2/surveyquestions
+
+  # force higher rev
+  increvdb activitylog $2
+  increvdb assigmentpaper $2
+  increvdb membercourseprogress $2
+  increvdb members $2
 
   # favicon.ico
   wget https://open-learning-exchange.github.io/favicon.ico
