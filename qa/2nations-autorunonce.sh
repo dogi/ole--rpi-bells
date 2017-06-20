@@ -164,7 +164,7 @@ echo '' >> /boot/autorun.sh
 
 # install an old and a new nation
 nation old 5984 0.12.59
-nation new 5985 0.13.1
+nation new 5985 0.13.2
 
 #center
 docker run -d -p 5983:5984 --name center -v /srv/data/center:/usr/local/var/lib/couchdb -v /srv/log/center:/usr/local/var/log/couchdb dogi/rpi-couchdb
